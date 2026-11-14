@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Birthday Surprise</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="balloons"></div>
+    <div id="stars"></div>
+
+    <main class="main-container">
+
+        <div class="intro">
+            <p>A LITTLE WORLD MADE JUST FOR YOU</p>
+            <h1>Something Beautiful Is Waiting...</h1>
+        </div>
+
+        <div class="birthday-box" id="birthdayBox">
+
+            <div class="flower">✿</div>
+
+            <h2>Your Special Day</h2>
+
+            <p>
+                A little surprise is waiting behind this date.
+                <br>
+                Enter your birthday to unlock it.
+            </p>
+
+            <form id="birthdayForm">
+
+                <label for="birthdayDate">
+                    BIRTHDAY DATE
+                </label>
+
+                <input
+                    type="date"
+                    id="birthdayDate"
+                    required
+                >
+
+                <button type="submit">
+                    UNLOCK THE SURPRISE ✨
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <div id="burst"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

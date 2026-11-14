@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Secret Letter For You 💌</title>
+    <link rel="stylesheet" href="page4.css">
+</head>
+<body>
+
+    <div id="stars"></div>
+    <div id="balloons"></div>
+
+    <main class="page-container">
+
+        <header>
+            <p class="top-label">CLASSIFIED • A SPECIAL SURPRISE</p>
+            <h1>A Secret Awaits You <span>🔐</span></h1>
+            <p class="subtitle">
+                Some surprises are worth investigating.
+            </p>
+        </header>
+
+        <!-- Locked envelope -->
+        <section id="lockedSection" class="locked-section">
+
+            <div class="envelope" id="envelope">
+                <div class="envelope-back"></div>
+                <div class="envelope-paper"></div>
+                <div class="envelope-front"></div>
+                <div class="envelope-flap"></div>
+                <div class="wax-seal">♥</div>
+            </div>
+
+            <h2>This letter is protected!</h2>
+            <p>You cannot open it so easily...</p>
+
+            <button id="tryButton" class="main-button">
+                TRY TO OPEN 🔍
+            </button>
+        </section>
+
+        <!-- Investigation archive -->
+        <section id="archiveSection" class="archive-section">
+
+            <div class="archive-heading">
+                <span class="archive-icon">🗂️</span>
+                <div>
+                    <h2>SECRET FILE ARCHIVE</h2>
+                    <p>30 files found • 1 unusual record</p>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <strong>MISSION:</strong>
+                <p>
+                    Investigate the files. Find the unusual security record.
+                    Identify the three relevant values and add them together
+                    to discover the secret code.
+                </p>
+            </div>
+
+            <div class="archive-layout">
+
+                <div class="file-list-panel">
+                    <h3>ARCHIVE FILES</h3>
+                    <div id="fileList" class="file-list"></div>
+                </div>
+
+                <div class="file-viewer">
+                    <div class="viewer-top">
+                        <span class="viewer-dot"></span>
+                        <span class="viewer-dot"></span>
+                        <span class="viewer-dot"></span>
+                        <span id="viewerTitle">FILE VIEWER</span>
+                    </div>
+
+                    <div id="fileContent" class="file-content">
+                        <div class="empty-viewer">
+                            <span>📁</span>
+                            <p>Select a file to inspect its contents.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="codeSection" class="code-section">
+                <h3>🔐 ENTER THE SECRET CODE</h3>
+                <p>
+                    Add the three relevant values from the unusual
+                    security record.
+                </p>
+
+                <div class="code-input-row">
+                    <input
+                        type="text"
+                        id="secretCode"
+                        inputmode="numeric"
+                        maxlength="4"
+                        placeholder="Enter 4-digit code"
+                        autocomplete="off"
+                    >
+
+                    <button id="unlockButton" class="main-button">
+                        UNLOCK LETTER
+                    </button>
+                </div>
+
+                <p id="codeMessage" class="code-message"></p>
+            </div>
+
+        </section>
+
+        <!-- Birthday letter -->
+        <section id="letterSection" class="letter-section">
+
+            <div class="opened-envelope">💌</div>
+
+            <p class="letter-label">A LETTER WRITTEN JUST FOR YOU</p>
+            <h2>To My Dear Thangachi ❤️</h2>
+
+            <div class="letter-paper">
+                <p id="letterText"></p>
+                <span id="typingCursor">|</span>
+            </div>
+
+            <div id="letterFooter" class="letter-footer">
+                <p>With lots of love,</p>
+                <h3>Your Annan ❤️</h3>
+
+                <button id="finalButton" class="main-button">
+                    ONE LAST SURPRISE AWAITS ❤️
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="page4.js"></script>
+</body>
+</html>

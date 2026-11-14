@@ -1,0 +1,404 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Georgia, serif;
+    background: linear-gradient(145deg, #ffe4ed, #f8c5d8, #f5d8ec);
+    color: #713c59;
+}
+
+#stars, #balloons {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#stars {
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px white;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Floating balloons */
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 35px;
+    height: 45px;
+    border-radius: 50% 50% 45% 45%;
+    opacity: 0.65;
+    animation: floatUp linear infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.7);
+    top: 44px;
+    left: 50%;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    to {
+        transform: translateY(-125vh) rotate(8deg);
+    }
+}
+
+/* Main layout */
+
+.page-container {
+    position: relative;
+    z-index: 2;
+    width: min(950px, 94%);
+    margin: auto;
+    padding: 45px 15px 60px;
+    text-align: center;
+}
+
+.top-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #a65b7e;
+    margin-bottom: 14px;
+}
+
+header h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: normal;
+    color: #873d63;
+    text-shadow: 0 3px 15px rgba(255,255,255,0.8);
+}
+
+header h1 span {
+    font-size: 28px;
+}
+
+.subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #965c79;
+    margin-top: 12px;
+}
+
+/* Progress bar */
+
+.progress-section {
+    max-width: 350px;
+    margin: 28px auto 25px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #96516f;
+}
+
+.progress-track {
+    height: 7px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #e879a7, #b66cc6);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+/* Candles grid */
+
+.candles-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px 15px;
+    max-width: 620px;
+    margin: 0 auto 35px;
+}
+
+.candle {
+    min-height: 110px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.35);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #985b78;
+
+    position: relative;
+    overflow: visible;
+}
+
+.candle:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.65);
+    box-shadow: 0 8px 20px rgba(170,90,130,0.15);
+}
+
+.candle:disabled {
+    cursor: default;
+}
+
+.candle-body {
+    width: 20px;
+    height: 52px;
+    border-radius: 5px 5px 3px 3px;
+    background: linear-gradient(90deg, #f6b8d1, #fff0f6, #e9a5c3);
+    border: 1px solid #e5a0bd;
+    position: relative;
+    margin-top: 12px;
+}
+
+.wick {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background: #754d53;
+    top: -8px;
+    left: 8px;
+}
+
+.flame {
+    position: absolute;
+    width: 13px;
+    height: 19px;
+    background: linear-gradient(#fff9a6, #ff9e42, #ff6b78);
+    border-radius: 50% 50% 45% 45%;
+    top: -27px;
+    left: 3px;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.candle.lit .flame {
+    opacity: 1;
+    transform: scale(1);
+    animation: flameFlicker 0.8s infinite alternate;
+    box-shadow: 0 0 15px #ffb75e;
+}
+
+@keyframes flameFlicker {
+    from {
+        transform: scale(0.9) rotate(-5deg);
+    }
+
+    to {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+.candle-number {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+.candle.lit {
+    background: rgba(255,255,255,0.7);
+    border-color: #e7a0c1;
+    box-shadow: 0 0 20px rgba(255,190,220,0.5);
+    z-index: 5;
+}
+
+/* Floating wish cloud */
+
+.wish-cloud {
+    position: absolute;
+    bottom: calc(100% + 16px);
+    left: 50%;
+
+    transform: translateX(-50%) translateY(10px) scale(0.85);
+
+    width: 190px;
+    min-height: 85px;
+    padding: 14px 13px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #f0b5d0;
+    border-radius: 22px;
+
+    color: #874565;
+    box-shadow: 0 8px 25px rgba(160, 80, 120, 0.2);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 10;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s;
+}
+
+.wish-cloud::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+
+    width: 17px;
+    height: 17px;
+
+    background: white;
+    border-right: 1px solid #f0b5d0;
+    border-bottom: 1px solid #f0b5d0;
+
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.wish-cloud.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.wish-cloud small {
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #bd7194;
+}
+
+.wish-cloud p {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    line-height: 1.45;
+    text-align: center;
+    color: #874565;
+}
+
+/* Completion section */
+
+.completion {
+    display: none;
+    max-width: 540px;
+    margin: 30px auto 0;
+    padding: 28px 20px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 20px;
+    animation: appear 1s ease;
+}
+
+.completion.show {
+    display: block;
+}
+
+.completion h2 {
+    font-size: 25px;
+    font-weight: normal;
+    color: #a34472;
+    margin-bottom: 12px;
+}
+
+.completion p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #8d5a76;
+}
+
+#letterButton {
+    margin-top: 22px;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(100deg, #d66d9e, #b56dbb);
+    color: white;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#letterButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(175,90,145,0.3);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsive */
+
+@media (max-width: 520px) {
+    .candles-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px 9px;
+    }
+
+    .candle {
+        min-height: 100px;
+    }
+
+    .page-container {
+        padding-top: 35px;
+    }
+
+    .wish-cloud {
+        width: 155px;
+        min-height: 75px;
+        padding: 10px;
+    }
+
+    .wish-cloud p {
+        font-size: 11px;
+    }
+}

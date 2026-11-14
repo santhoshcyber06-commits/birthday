@@ -1,0 +1,177 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    background:
+        radial-gradient(ellipse at 50% 100%, #29205c 0%, transparent 55%),
+        linear-gradient(180deg, #050817, #10132e, #171536);
+    color: white;
+}
+
+/* Star background */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.5);
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Shooting stars */
+
+.shooting-star {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: rotate(-35deg);
+    opacity: 0;
+    animation: shooting 4s linear infinite;
+}
+
+@keyframes shooting {
+    0% {
+        transform: translate(0, 0) rotate(-35deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    35% {
+        transform: translate(-250px, 170px) rotate(-35deg);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Main greeting */
+
+.greeting-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.greeting-content {
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: revealGreeting 2s ease forwards;
+    animation-delay: 4s;
+}
+
+@keyframes revealGreeting {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-text {
+    color: #d9c8ff;
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 75px);
+    font-weight: normal;
+    color: #fff4ff;
+    text-shadow: 0 0 25px rgba(213, 173, 255, 0.65);
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: clamp(23px, 5vw, 38px);
+    font-weight: normal;
+    color: #e6c9ff;
+    margin-bottom: 28px;
+}
+
+h2 span {
+    display: inline-block;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.message {
+    font-family: Arial, sans-serif;
+    color: #d6d5ed;
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 35px;
+}
+
+#magicButton {
+    border: 1px solid rgba(230, 205, 255, 0.7);
+    background: rgba(181, 132, 255, 0.12);
+    color: white;
+    padding: 16px 28px;
+    border-radius: 35px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+#magicButton:hover {
+    background: rgba(190, 145, 255, 0.3);
+    box-shadow: 0 0 25px rgba(195, 151, 255, 0.5);
+    transform: translateY(-4px);
+}
+
+#magicButton span {
+    margin-left: 8px;
+}
+
+@media (max-width: 480px) {
+    .small-text {
+        letter-spacing: 3px;
+        font-size: 9px;
+    }
+
+    .message {
+        font-size: 13px;
+    }
+}
